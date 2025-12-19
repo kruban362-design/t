@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Page 5</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="robots" content="index,follow">
+    <meta name="generator" content="GrapesJS Studio">
+  </head>
+
+  <body id="i78trd">
+    <img id="igw7fi" src="https://cdn.grapesjs.com/workspaces/cmjay25p30bshxbunyckf2klf/assets/965b2854-184f-487f-8ef0-affc71f29532__download-1.jpg" />
+    <div id="iliqfe">SHREE VENKATESHWARA HI-TECH ENGINEERING                                       COLLEGE</div>
+    <img id="irxth2" src="https://cdn.grapesjs.com/workspaces/cmjay25p30bshxbunyckf2klf/assets/4cd8b319-ec92-4d1c-bea5-7ba8ec2692f7__download.jpg" />
+    <section id="job-application-form-2" aria-labelledby="job-application-title" class="gjs-t-body">
+      <div class="ja-container" id="i2t58y">
+        <div class="ja-card gjs-t-border" id="ieidxg">
+          <header class="ja-header" id="i9p1no">
+            <h2 id="job-application-title" class="gjs-t-h1">                                                                    Job Application Form</h2>
+            <p class="ja-subtitle" id="imdldd">                                                          Apply for your next role — we’ll get back to you soon.</p>
+          </header>
+          <form method="post" id="ja-form" action="#" enctype="multipart/form-data" novalidate="">
+            <div class="ja-field" id="iah9dd">
+              <label for="ja-fullname" id="i01di8">                                                                               Full Name<span aria-hidden="true" class="ja-required" id="i0652f">*</span>
+              </label>
+              <input type="text" id="ja-fullname" name="fullname" placeholder="Enter your full name" required aria-required="true" autocomplete="name" />
+              <div id="err-fullname" class="ja-error">                                                                               Please enter your full name.</div>
+            </div>
+            <div class="ja-field" id="i5r1uo">
+              <label for="ja-email" id="i54ved">                                                                               Email Address<span aria-hidden="true" class="ja-required" id="iquuwc">*</span>
+              </label>
+              <input type="email" id="ja-email" name="email" placeholder="you@example.com" required aria-required="true" autocomplete="email" inputmode="email" />
+              <div id="err-email-2" class="ja-error">                                                                               Please enter a valid email address.</div>
+            </div>
+            <div class="ja-field" id="iaqe8d">
+              <label for="ja-phone" id="ihryt1">                                                                               Phone Number<span aria-hidden="true" class="ja-required" id="if032n">*</span>
+              </label>
+              <input type="tel" id="ja-phone" name="phone" placeholder="e.g., +1 555 123 4567" required aria-required="true" autocomplete="tel" inputmode="tel" pattern="^[0-9+().\-\s]{7,}$" />
+              <div id="err-phone-2" class="ja-error">                                                                               Please enter a valid phone number.</div>
+            </div>
+            <div class="ja-field" id="ip5nry">
+              <label for="ja-position" id="irf12c">                                                                               Position Applied For<span aria-hidden="true" class="ja-required" id="i6ftmh">*</span>
+              </label>
+              <input type="text" id="ja-position" name="position" placeholder="e.g., Frontend Developer" required aria-required="true" autocomplete="off" />
+              <div id="err-position-2" class="ja-error">                                                                               Please specify the position.</div>
+            </div>
+            <div class="ja-field full" id="i01nm5">
+              <label for="ja-resume" id="ismy2i">                                                                               Upload Resume (PDF or DOC)<span aria-hidden="true" class="ja-required" id="iylm8h">*</span>
+              </label>
+              <input type="file" id="ja-resume" name="resume" accept=".pdf,.doc,.docx" required aria-required="true" />
+              <p class="ja-help" id="it0poi">                                                                               Max 5 MB. Accepted formats: PDF, DOC, DOCX.</p>
+              <div id="err-resume-2" class="ja-error">                                                                                Please upload a valid resume file (PDF/DOC, max 5 MB).</div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <script id="igbty3">
+        (function() {
+          const form = document.getElementById('ja-form');
+          const fields = {
+            fullname: document.getElementById('ja-fullname'),
+            email: document.getElementById('ja-email'),
+            phone: document.getElementById('ja-phone'),
+            position: document.getElementById('ja-position'),
+            resume: document.getElementById('ja-resume')
+          };
+          const errors = {
+            fullname: document.getElementById('err-fullname'),
+            email: document.getElementById('err-email'),
+            phone: document.getElementById('err-phone'),
+            position: document.getElementById('err-position'),
+            resume: document.getElementById('err-resume')
+          };
+
+          function setInvalid(inputEl, errorEl, state) {
+            const wrapper = inputEl.closest('.ja-field');
+            if (state) {
+              wrapper.classList.add('invalid');
+              errorEl.style.display = 'block';
+            } else {
+              wrapper.classList.remove('invalid');
+              errorEl.style.display = 'none';
+            }
+          }
+
+          function validateFile(input) {
+            const file = input.files && input.files[0];
+            if (!file) return false;
+            const allowed = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+            const isTypeOk = allowed.includes(file.type) || /\.(pdf|doc|docx)$/i.test(file.name);
+            const isSizeOk = file.size <= 5 * 1024 * 1024;
+            return isTypeOk && isSizeOk;
+          }
+
+          function validateField(name) {
+            const el = fields[name];
+            let valid = true;
+
+            if (name === 'fullname' || name === 'position') {
+              valid = el.value.trim().length > 1;
+            } else if (name === 'email') {
+              valid = el.validity.valid && /\S+@\S+\.\S+/.test(el.value);
+            } else if (name === 'phone') {
+              valid = new RegExp(el.getAttribute('pattern')).test(el.value.trim());
+            } else if (name === 'resume') {
+              valid = validateFile(el);
+            }
+
+            setInvalid(el, errors[name], !valid);
+            return valid;
+          }
+
+          Object.keys(fields).forEach(name => {
+            const el = fields[name];
+            el.addEventListener('input', () => validateField(name));
+            el.addEventListener('blur', () => validateField(name));
+            if (name === 'resume') {
+              el.addEventListener('change', () => validateField(name));
+            }
+          });
+
+          form.addEventListener('submit', function(e) {
+            let allValid = true;
+            Object.keys(fields).forEach(name => {
+              const ok = validateField(name);
+              if (!ok) allValid = false;
+            });
+            if (!allValid) {
+              e.preventDefault();
+              const firstInvalid = form.querySelector('.ja-field.invalid input');
+              if (firstInvalid) firstInvalid.focus();
+            }
+          });
+        })();
+      </script>
+      <div class="ja-actions full" id="ic2e7g">
+        <button type="submit" aria-label="Submit job application" class="gjs-t-button ja-btn" id="iyt3jx">
+          <img src="https://api.iconify.design/mdi:send.svg?color=white&amp;width=20&amp;height=20" alt="Send" class="ja-icon" id="ibx88g" />
+          Submit Application
+        </button>
+      </div>
+    </section>
+  </body>
+<style>
+html {
+  scroll-behavior: smooth;
+}
+
+#i78trd {
+  background-image: url("https://cdn.grapesjs.com/workspaces/cmjay25p30bshxbunyckf2klf/assets/5373a0f2-2481-429d-a4c9-d8f5705d4116__istockphoto-1459373176-612x612.jpg");
+  background-position: 0px 0px;
+  background-size: 1500px 1500px;
+  background-repeat: repeat;
+  background-attachment: scroll;
+  background-origin: padding-box;
+}
+
+.full {
+  grid-column: 1 / -1;
+}
+
+#job-application-form-2 {
+  padding: 32px 16px;
+  background-color: inherit;
+  position: relative;
+  bottom: 280px;
+  left: 50px;
+}
+
+#job-application-form .ja-container {
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+#job-application-form .ja-card {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+#job-application-form .ja-header {
+  margin-bottom: 16px;
+}
+
+#job-application-form .ja-subtitle {
+  color: #601843;
+  font-size: 1.05rem;
+  line-height: 1.6rem;
+  margin-top: 4px;
+}
+
+#job-application-form .ja-field {
+  display: flex;
+  flex-direction: column;
+}
+
+#job-application-form .ja-field.full {
+  grid-column: 1 / -1;
+}
+
+#job-application-form input[type="text"],
+#job-application-form input[type="email"],
+#job-application-form input[type="tel"],
+#job-application-form input[type="file"] {
+  padding: 10px 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: #333333;
+  background-color: #ffffff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  outline: none;
+}
+
+#job-application-form input::placeholder {
+  color: #9a9a9a;
+}
+
+#job-application-form input[type="text"]:focus,
+#job-application-form input[type="email"]:focus,
+#job-application-form input[type="tel"]:focus,
+#job-application-form input[type="file"]:focus {
+  border-color: #cf549e;
+  box-shadow: 0 0 0 3px rgba(207, 84, 158, 0.12);
+}
+
+#job-application-form .ja-help {
+  margin-top: 6px;
+  font-size: 0.85rem;
+  color: #6b6b6b;
+}
+
+#job-application-form .ja-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+#job-application-form .ja-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.2s ease, transform 0.06s ease, box-shadow 0.2s ease;
+  background-color: #cf549e;
+  color: #ffffff;
+  border-radius: 6px;
+}
+
+#job-application-form .ja-btn:hover {
+  background-color: #b9227d;
+  box-shadow: 0 4px 10px rgba(207, 84, 158, 0.24);
+}
+
+#job-application-form .ja-btn:active {
+  transform: translateY(1px);
+}
+
+#job-application-form .ja-icon {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+}
+
+#job-application-form .ja-required {
+  color: #dc3545;
+  margin-left: 2px;
+}
+
+#job-application-form .ja-error {
+  display: none;
+  margin-top: 6px;
+  font-size: 0.85rem;
+  color: #dc3545;
+}
+
+#job-application-form .ja-field.invalid input {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.12);
+}
+
+#igw7fi {
+  color: black;
+  width: 197px;
+  height: 181px;
+  background-image: url("https://cdn.grapesjs.com/workspaces/cmjay25p30bshxbunyckf2klf/assets/5373a0f2-2481-429d-a4c9-d8f5705d4116__istockphoto-1459373176-612x612.jpg");
+  background-position: 0px 0px;
+  background-size: 100px 100px;
+  background-repeat: repeat;
+  background-attachment: scroll;
+  background-origin: padding-box;
+}
+
+#iliqfe {
+  padding: 10px;
+  font-size: 30px;
+  width: 750px;
+  position: relative;
+  left: 220px;
+  bottom: 180px;
+}
+
+#irxth2 {
+  color: black;
+  width: 170px;
+  height: 168px;
+  position: relative;
+  right: 0px;
+  left: 1010px;
+  bottom: 280px;
+}
+
+#ic2e7g {
+  position: relative;
+  left: 450px;
+}
+
+@media (max-width: 992px) {
+  #job-application-form .ja-card {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  #job-application-form-2 {
+    padding: 24px 12px;
+  }
+
+  #job-application-form .ja-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+</style>
+
+</html>
